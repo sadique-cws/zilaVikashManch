@@ -1,3 +1,9 @@
+<?php include "../include/dbConfig.php";
+
+authCheck('admin','login');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -5,5 +5,5 @@
     <a href="manageStudents.php" class="list-group-item list-group-item-action text-white bg-transparent"><i class="bi bi-person-workspace"></i> Manage Students</a>
     <a href="" class="list-group-item list-group-item-action text-white bg-transparent"><i class="bi bi-check-square"></i> Feedback/Mails</a>
     <a href="" class="list-group-item list-group-item-action text-white bg-transparent"><i class="bi bi-bell"></i> Notification/Events</a>
-    <a href="" class="list-group-item list-group-item-action text-white bg-transparent"><i class="bi bi-power"></i> Logout</a>
+    <a href="logout.php" class="list-group-item list-group-item-action text-white bg-transparent"><i class="bi bi-power"></i> Logout</a>
 </div>

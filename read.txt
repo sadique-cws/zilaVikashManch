@@ -1,0 +1,35 @@
+category
+cat_id, title
+
+project
+1. project title
+2. category_id
+3. description
+4. address (nullable)
+5. image (cover image)
+6. status (0 = deactivated/ 1 = activate)
+7. doc
+8. admin_id  
+
+projectReport
+1. project_id
+2. user_id
+3. description
+4. upload_file (nullable)
+5. status (1 = approved / 0 = pending / 2 = reject)
+6. date_of_Creation
+7. date_of_modification
+
+accounts
+1. id
+2. name (nullable)
+3. type (1 = institute / 0 = student)
+4. address 
+5. gender (student)
+6. contact 
+7. email
+8. password 
+9. dob ( student)
+10. est_year (institute)
+11. board_name (institute)
+12. image

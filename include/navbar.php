@@ -4,7 +4,9 @@
 
 
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="" class="btn btn-danger"><i class="bi bi-power"></i> Logout</a></li>
+            <?php if(isset($_SESSION['admin'])): ?>
+            <li class="nav-item"><a href="logout.php" class="btn btn-danger"><i class="bi bi-power"></i> Logout</a></li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
