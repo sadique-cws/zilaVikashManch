@@ -69,7 +69,7 @@ authCheck('admin','login');
                            <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown">Action</button>
                                 <div class="dropdown-menu">
-                                    <a href="" class="dropdown-item">link 1</a>
+                                    <a href="" class="dropdown-item">View details</a>
                                     <a href="" class="dropdown-item">link 2</a>
                                     <a href="" class="dropdown-item">link 3</a>
                                     <a href="" class="dropdown-item">link 4</a>

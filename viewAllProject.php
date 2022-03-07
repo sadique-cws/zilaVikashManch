@@ -16,35 +16,13 @@
 
     <div class="container mt-3">
         <div class="row">
-            <div class="col-7">
-                <!-- carousel here -->
-                <div class="carousel slide" data-bs-ride="carousel" id="banner" data-bs-interval="2000">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="image/banner1.jpeg" class="w-100" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="image/banner2.jpg" class="w-100" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="image/banner3.jpg" class="w-100" alt="">
-                        </div>
-                    </div>
-                    <a href="#banner" class="carousel-control-prev" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a href="#banner" class="carousel-control-next" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-5"> 
+            <div class="col-7"> 
                 <div class="card border border-primary">
                     <div class="card-header bg-primary text-white">Latest Projects</div>
                     <div class="card-body py-0 px-1">
                         <table class="table mb-0 table-sm small table-hover">
                         <?php 
-                            $callingProject = mysqli_query($connect,"select * from projects JOIN categories ON projects.category_id=categories.cat_id order by projects.pro_id DESC LIMIT 5");
+                            $callingProject = mysqli_query($connect,"select * from projects JOIN categories ON projects.category_id=categories.cat_id order by projects.pro_id DESC");
                             $count = 1;
                             while($row = mysqli_fetch_array($callingProject)){
                         ?>
@@ -60,9 +38,7 @@
                        <?php $count++; } ?>
                     </table>
                     </div>
-                    <div class="card-footer">
-                        <a href="viewAllProject.php" class="btn btn-dark btn-sm float-end">View More...</a>
-                    </div>
+                   
                 </div>
             </div>
         </div>
