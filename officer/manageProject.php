@@ -29,7 +29,7 @@ authCheck('admin','login');
                        <h1 class="h5 fs-bolder">Manage Projects/Problems</h1>
                    </div>
                    <div class="col-4">
-                       <a href="" class="btn btn-success float-end">Publish Project</a>
+                       <a href="insertProject.php" class="btn btn-success float-end">Publish Project</a>
                    </div>
                </div>
                <table class="table mt-3">
@@ -42,21 +42,29 @@ authCheck('admin','login');
                        <th>Date</th>
                        <th>Action</th>
                    </tr>
+                   <?php 
+                   $callingProjects = mysqli_query($connect,"select * from projects JOIN categories ON projects.category_id = categories.cat_id");
+                   while($row = mysqli_fetch_array($callingProjects)){
+                   ?>
                    <tr>
                        <!-- demo data -->
-                       <td>PS01</td>
-                       <td>Green Corridor</td>
-                       <td>Transports</td>
-                       <td>Lorem ipsum dolor sit amet consec</td>
+                       <td>PS<?= $row['pro_id'];?></td>
+                       <td><?= $row['pro_title'];?></td>
+                       <td><?= $row['cat_title'];?></td>
+                       <td><?= $row['description'];?></td>
                        <td>
+                           <?php 
+                           if($row['status'] == 1): ?>
                            <span class="badge bg-success text-white">
                                Open
                            </span>
+                           <?php else: ?>
                            <span class="badge bg-dark text-white">
                                Closed
                            </span>
+                           <?php endif;?>
                        </td>
-                       <td>13 July 2022</td>
+                       <td><?= $row['doc'];?></td>
                        <td>
                            <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown">Action</button>
@@ -70,6 +78,7 @@ authCheck('admin','login');
                            </div>
                        </td>
                    </tr>
+                <?php } ?>
                </table>
             </div>
         </div>
