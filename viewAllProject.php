@@ -28,7 +28,7 @@
                         ?>
                         <tr>
                             <td><?= date("d-M-Y",strtotime($row['doc']));?></td>
-                            <td><?= $row['pro_title'];?> 
+                            <td><a href="viewProjects.php?pro_id=<?= $row['pro_id'];?>" class="nav-link m-0 p-0 d-inline"><?= $row['pro_title'];?></a> 
                             <?php if($count == 1): ?>
                                 <span class="badge bg-danger text-white small">New</span>
                             <?php endif; ?>

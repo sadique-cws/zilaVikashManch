@@ -1,3 +1,10 @@
+<?php include "include/dbConfig.php";
+
+if(isset($_GET['next'])){
+    $_SESSION['next'] = $_GET['next'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,21 +29,40 @@
                        <form action="" method="post">
                            <div class="mb-2">
                                <div class="form-floating">
-                                   <input type="text" placeholder="email/username" class="form-control">
+                                   <input type="text" placeholder="email/username" name="email" class="form-control">
                                    <label for="">Email/Username</label>
                                </div>
                            </div>
                            <div class="mb-2">
                                <div class="form-floating">
-                                   <input type="password" placeholder="password" class="form-control">
+                                   <input type="password" placeholder="password" name="password" class="form-control">
                                    <label for="">Password</label>
                                </div>
                            </div>
                            <div class="mb-2">
-                                   <input type="submit" class="btn btn-primary w-100" value="Login">
+                                   <input type="submit" name="login" class="btn btn-primary w-100" value="Login">
                                </div>
                            </div>
                        </form>
+                       <?php
+                         if (isset($_POST['login'])) {
+                             $email=$_POST['email'];
+                             $password=$_POST['password'];
+
+                             $query=mysqli_query($connect,"select * from accounts where (email='$email' OR contact='$email') AND password='$password'");
+                             $count=mysqli_num_rows($query);
+                             if ($count>0) {
+                                 $_SESSION['user']=$email;
+                                if(isset($_SESSION['next'])){
+                                    echo "<script>window.open('".$_SESSION['next']."','_self')</script>"; 
+                                }
+                                redirect(); 
+                             }
+                             else {
+                                 alert("Email and Password is incorrect");
+                             }
+                         }
+                       ?>
                    </div>
                    <div class="card-footer">
                        <a href="register.php" class="nav-link float-start p-0 m-0 small text-muted">New User?</a>

@@ -1,3 +1,10 @@
+<?php include "include/dbConfig.php";
+
+if(isset($_GET['next'])){
+    $_SESSION['next'] = $_GET['next'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,32 +29,51 @@
                        <form action="" method="post">
                            <div class="mb-2">
                                <div class="form-floating">
-                                   <input type="text" placeholder="email/username" class="form-control">
-                                   <label for="">Fullname</label>
+                                   <input type="text" placeholder="name" name="name" class="form-control">
+                                   <label for="">Name</label>
                                </div>
                            </div>
                            <div class="mb-2">
                                <div class="form-floating">
-                                   <input type="text" placeholder="email/username" class="form-control">
-                                   <label for="">Contact</label>
-                               </div>
-                           </div>
-                           <div class="mb-2">
-                               <div class="form-floating">
-                                   <input type="text" placeholder="email/username" class="form-control">
+                                   <input type="text" placeholder="email" name="email" class="form-control">
                                    <label for="">Email</label>
                                </div>
                            </div>
                            <div class="mb-2">
                                <div class="form-floating">
-                                   <input type="password" placeholder="password" class="form-control">
+                                   <input type="text" placeholder="contact" name="contact" class="form-control">
+                                   <label for="">Contact</label>
+                               </div>
+                           </div>
+                           <div class="mb-2">
+                               <div class="form-floating">
+                                   <input type="password" placeholder="password" name="password" class="form-control">
                                    <label for="">Password</label>
                                </div>
                            </div>
                            <div class="mb-2">
-                                   <input type="submit" class="btn btn-primary w-100" value="Login">
+                                   <input type="submit" name="create" class="btn btn-primary w-100" value="Login">
                            </div>
                        </form>
+                       <?php
+                           if (isset($_POST['create'])) {
+                               $name=$_POST['name'];
+                               $email=$_POST['email'];
+                               $contact=$_POST['contact'];
+                               $password=$_POST['password'];
+
+                               $query=mysqli_query($connect,"insert into accounts (name,email,contact,password) value ('$name','$email','$contact','$password')");
+                               
+                               if ($query) {
+                                if(isset($_SESSION['next'])){
+                                    $_SESSION['user'] = $email;
+                                    echo "<script>window.open('".$_SESSION['next']."','_self')</script>"; 
+                                }
+                                   redirect('login');
+                               }
+
+                           }
+                       ?>
                    </div>
                    <div class="card-footer">
                        <a href="login.php" class="nav-link float-start p-0 m-0 small text-muted">Already Registered User?</a>
