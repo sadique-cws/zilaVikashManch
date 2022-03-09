@@ -37,7 +37,6 @@ authCheck('admin','login');
                        <th>#id</th>
                        <th>Title</th>
                        <th>Category</th>
-                       <th>Description</th>
                        <th>Status</th>
                        <th>Date</th>
                        <th>Action</th>
@@ -51,7 +50,6 @@ authCheck('admin','login');
                        <td>PS<?= $row['pro_id'];?></td>
                        <td><?= $row['pro_title'];?></td>
                        <td><?= $row['cat_title'];?></td>
-                       <td><?= $row['description'];?></td>
                        <td>
                            <?php 
                            if($row['status'] == 1): ?>
