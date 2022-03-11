@@ -23,7 +23,8 @@ if(isset($_GET['next'])){
     <div class="container mt-4">
         <div class="row">
            <div class="col-5 mx-auto">
-               <div class="row mb-3">
+          
+                 <div class="row mb-3">
                    <div class="col-6">
                        <div class="card bg-success text-white">
                            <div class="card-body">
@@ -41,8 +42,9 @@ if(isset($_GET['next'])){
                        </div>
                    </div>
                </div>
+
                <div class="card">
-                   <div class="card-header">Register Here as Candidate</div>
+                   <div class="card-header">Register Here as Institute</div>
                    <div class="card-body">
                        <form action="" method="post">
                            <div class="mb-2">
@@ -65,6 +67,18 @@ if(isset($_GET['next'])){
                            </div>
                            <div class="mb-2">
                                <div class="form-floating">
+                                   <input type="text" placeholder="est_year" name="est_year" class="form-control">
+                                   <label for="">Establish Year</label>
+                               </div>
+                           </div>
+                           <div class="mb-2">
+                               <div class="form-floating">
+                                   <input type="text" placeholder="board name" name="board_name" class="form-control">
+                                   <label for="">Board Name</label>
+                               </div>
+                           </div>
+                           <div class="mb-2">
+                               <div class="form-floating">
                                    <input type="password" placeholder="password" name="password" class="form-control">
                                    <label for="">Password</label>
                                </div>
@@ -79,8 +93,11 @@ if(isset($_GET['next'])){
                                $email=$_POST['email'];
                                $contact=$_POST['contact'];
                                $password= sha1($_POST['password']);
+                               $est_year = $_POST['est_year'];
+                               $board_name = $_POST['board_name'];
+                               $type = 1;
 
-                               $query=mysqli_query($connect,"insert into accounts (name,email,contact,password) value ('$name','$email','$contact','$password')");
+                               $query=mysqli_query($connect,"insert into accounts (name,email,contact,password,est_year,board_name,type) value ('$name','$email','$contact','$password','$est_year','$board_name','$type')");
                                
                                if ($query) {
                                 if(isset($_SESSION['next'])){

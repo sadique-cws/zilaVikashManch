@@ -47,7 +47,7 @@ if(isset($_GET['next'])){
                        <?php
                          if (isset($_POST['login'])) {
                              $email=$_POST['email'];
-                             $password=$_POST['password'];
+                             $password=sha1($_POST['password']);
 
                              $query=mysqli_query($connect,"select * from accounts where (email='$email' OR contact='$email') AND password='$password'");
                              $count=mysqli_num_rows($query);

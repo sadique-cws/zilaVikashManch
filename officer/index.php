@@ -28,7 +28,12 @@ authCheck('admin','login');
                     <div class="col-3">
                         <div class="card bg-success text-white shadow">
                             <div class="card-body">
-                                <h1 class="display-3">50+</h1>
+                                <h1 class="display-3">
+                                    <?php 
+                                    $query = mysqli_query($connect,"select * from projects");
+                                    echo $count = mysqli_num_rows($query);
+                                    ?>
+                                </h1>
                                 <p class="small">Total Completed Project</p>
                             </div>
                         </div>
@@ -36,15 +41,23 @@ authCheck('admin','login');
                     <div class="col-3">
                         <div class="card bg-danger text-white shadow">
                             <div class="card-body">
-                                <h1 class="display-3">50+</h1>
-                                <p class="small">Total Open Project</p>
+                                <h1 class="display-3">
+                                <?php 
+                                    $query = mysqli_query($connect,"select * from reports");
+                                    echo $count = mysqli_num_rows($query);
+                                    ?>
+                                </h1>
+                                <p class="small">Total Reports</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card bg-info text-white shadow">
                             <div class="card-body">
-                                <h1 class="display-3">50+</h1>
+                                <h1 class="display-3"> <?php 
+                                    $query = mysqli_query($connect,"select * from accounts where type='1'");
+                                    echo $count = mysqli_num_rows($query);
+                                    ?></h1>
                                 <p class="small">Total Register Institute</p>
                             </div>
                         </div>
@@ -52,7 +65,12 @@ authCheck('admin','login');
                     <div class="col-3">
                         <div class="card bg-warning text-white shadow">
                             <div class="card-body">
-                                <h1 class="display-3">50+</h1>
+                                <h1 class="display-3">
+                                <?php 
+                                $query = mysqli_query($connect,"select * from accounts where type='0'");
+                                echo $count = mysqli_num_rows($query);
+                                    ?>
+                                </h1>
                                 <p class="small">Total Register Candidate</p>
                             </div>
                         </div>
@@ -67,10 +85,25 @@ authCheck('admin','login');
                                     <tr>
                                         <td>P.id</td>
                                         <td>Title</td>
-                                        <td>Status</td>
+                                        <td>category</td>
                                         <td>Date</td>
                                     </tr>
-                                    
+                                    <?php 
+                            $callingProject = mysqli_query($connect,"select * from projects JOIN categories ON projects.category_id=categories.cat_id order by projects.pro_id DESC LIMIT 5");
+                            $count = 1;
+                            while($row = mysqli_fetch_array($callingProject)){
+                        ?>
+                        <tr>
+                            <td><?= $row['pro_id'];?></td>
+                            <td><a href="../viewProjects.php?pro_id=<?= $row['pro_id'];?>" class="nav-link m-0 p-0 d-inline"><?= $row['pro_title'];?> </a>
+                            <?php if($count == 1): ?>
+                                <span class="badge bg-danger text-white small">New</span>
+                            <?php endif; ?>
+                        </td>
+                            <td><?= $row['cat_title'];?></td>
+                            <td><?= date("d-M-Y",strtotime($row['doc']));?></td>
+                        </tr>
+                       <?php $count++; } ?>
                                 </table>
                             </div>
                         </div>

@@ -31,16 +31,22 @@ authCheck('admin','login');
                    <tr>
                        <th>#id</th>
                        <th>Name</th>
-                       <th>Category</th>
-                       <th>Address</th>
+                       <th>Board Name</th>
+                       <th>Establish Year</th>
+                       <th>Email</th>
                        <th>Action</th>
                    </tr>
-                   <tr>
+                   <?php
+                   $callingInstitute = mysqli_query($connect,"select * from accounts where type='1'");
+                   while($row = mysqli_fetch_array($callingInstitute)){
+                    ?>
+                    <tr>
                        <!-- demo data -->
-                       <td>I01</td>
-                       <td>RPC high School</td>
-                       <td>Secondary School</td>
-                       <td>Purnea City</td>
+                       <td><?= $row['id'];?></td>
+                       <td><?= $row['name'];?></td>
+                       <td><?= $row['board_name'];?></td>
+                       <td><?= $row['est_year'];?></td>
+                       <td><?= $row['email'];?></td>
                        <td>
                            <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown">Action</button>
@@ -54,6 +60,8 @@ authCheck('admin','login');
                            </div>
                        </td>
                    </tr>
+
+                    <?php } ?>
                </table>
             </div>
         </div>
