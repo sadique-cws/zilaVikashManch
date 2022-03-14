@@ -38,14 +38,16 @@
                    
                 </div>
                 <?php 
-                if(!isset($_SESSION['user'])): ?>
-                    <a href="login.php?next=viewProjects.php?pro_id=<?= $_GET['pro_id'];?>" class="btn btn-warning mt-5">Signin to Submit your Project</a>
 
-                <?php else: ?>
-
-                    <a href="#end" class="btn btn-success mt-5" data-bs-toggle="collapse">Submit your Project</a>
-
-                <?php endif; ?>
+                if(!isset($_SESSION['admin'])):
+                    if(!isset($_SESSION['user'])): ?>
+                        <a href="login.php?next=viewProjects.php?pro_id=<?= $_GET['pro_id'];?>" class="btn btn-warning mt-5">Signin to Submit your Project</a>
+                    <?php else: ?>
+                        <a href="#end" class="btn btn-success mt-5" data-bs-toggle="collapse">Submit your Project</a>
+                    <?php 
+                        endif;
+                    endif;
+                ?>
             </div>
             <div class="col-5">
                 <div class="card">

@@ -26,11 +26,9 @@ authCheck('admin','login');
             <div class="col-10 p-4">
                <div class="row">
                    <div class="col-8">
-                       <h1 class="h5 fs-bolder">Manage Projects/Problems</h1>
+                       <h1 class="h5 fs-bolder">Manage Reports</h1>
                    </div>
-                   <div class="col-4">
-                       <a href="insertProject.php" class="btn btn-success float-end">Publish Project</a>
-                   </div>
+                  
                </div>
                <table class="table mt-3">
                    <tr>
@@ -52,7 +50,7 @@ authCheck('admin','login');
                            <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown">Action</button>
                                 <div class="dropdown-menu">
-                                    <a href="" class="dropdown-item">View details</a>
+                                    <a href="viewReport.php?rep_id=<?= $row['r_id'];?>" class="dropdown-item">View details</a>
                                     <a href="" class="dropdown-item">link 2</a>
                                     <a href="" class="dropdown-item">link 3</a>
                                     <a href="" class="dropdown-item">link 4</a>
