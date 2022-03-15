@@ -51,16 +51,12 @@ authCheck('admin','login');
                        <td><?= $row['pro_title'];?></td>
                        <td><?= $row['cat_title'];?></td>
                        <td>
-                           <?php 
-                           if($row['status'] == 1): ?>
-                           <span class="badge bg-success text-white">
-                               Open
-                           </span>
-                           <?php else: ?>
-                           <span class="badge bg-dark text-white">
-                               Closed
-                           </span>
-                           <?php endif;?>
+                           <a href="manageProject.php?status=<?= $row['status'];?>&pro_id=<?= $row['pro_id'];?>">
+                                <span class="badge <?= ($row['status'] == 0)? "bg-dark":"bg-success";?> text-white">
+                                    <?= ($row['status'] == 0)? "Closed" : "Open";?>
+                                </span>
+                           </a>
+                           
                        </td>
                        <td><?= $row['doc'];?></td>
                        <td>
@@ -89,3 +85,11 @@ authCheck('admin','login');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php 
+    if(isset($_GET['status'])){
+        $status = ($_GET['status']==0)? 1 : 0; 
+        $run = mysqli_query($connect,"update projects set status='$status' where pro_id='".$_GET['pro_id']."'");
+        ($run)? redirect("manageProject"): null;
+    }
+?>

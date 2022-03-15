@@ -44,7 +44,7 @@
                     <div class="card-body py-0 px-1">
                         <table class="table mb-0 table-sm small table-hover">
                         <?php 
-                            $callingProject = mysqli_query($connect,"select * from projects JOIN categories ON projects.category_id=categories.cat_id order by projects.pro_id DESC LIMIT 5");
+                            $callingProject = mysqli_query($connect,"select * from projects JOIN categories ON projects.category_id=categories.cat_id where status='1' order by projects.pro_id DESC LIMIT 5");
                             $count = 1;
                             while($row = mysqli_fetch_array($callingProject)){
                         ?>

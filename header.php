@@ -22,6 +22,7 @@
             <li class="nav-item"><a href="" class="nav-link"><i class="bi bi-window-stack"></i> Projects</a></li>
             <li class="nav-item"><a href="" class="nav-link"><i class="bi bi-bell"></i> Events</a></li>
             <li class="nav-item"><a href="" class="nav-link"><i class="bi bi-arrow-down"></i> Notification</a></li>
+            <li class="nav-item"><a href="contact.php" class="nav-link"><i class="bi bi-phone"></i> Contact Us</a></li>
         </ul>
 
         <ul class="navbar-nav">
